@@ -1,0 +1,364 @@
+#include<stdio.h>
+#include<pthread.h>
+pthread_mutex_t ns,sn,ew,we,ne,nw,wn,ws,sw,se,es,en;
+
+void * nts()
+
+{
+
+printf("\nCar is going from North to south ");
+
+pthread_mutex_lock(&ew);
+
+pthread_mutex_lock(&we);
+
+pthread_mutex_lock(&se);
+
+pthread_mutex_lock(&en);
+
+sleep(2);
+
+printf("\nCar has gone succesfully n to s");
+
+pthread_mutex_unlock(&ew);
+
+pthread_mutex_unlock(&we);
+
+pthread_mutex_unlock(&se);
+
+pthread_mutex_unlock(&en);
+
+pthread_exit(NULL);
+
+}
+
+void * stn()
+
+{
+
+printf("\nCar is going from south to north");
+
+pthread_mutex_lock(&nw)
+;
+pthread_mutex_lock(&ew);
+
+pthread_mutex_lock(&we);
+
+pthread_mutex_lock(&ws);
+
+sleep(2);
+
+printf("\nCar is succesfully passed s to n" );
+
+pthread_mutex_unlock(&nw);
+
+pthread_mutex_unlock(&ew);
+
+pthread_mutex_unlock(&we);
+
+pthread_mutex_unlock(&ws);
+
+pthread_exit(NULL);
+
+}
+
+void *etw()
+
+{
+
+printf("\nCar is going from east to west ");
+
+pthread_mutex_lock(&ns);
+pthread_mutex_lock(&sn);
+
+pthread_mutex_lock(&ws);
+pthread_mutex_lock(&se);
+
+sleep(2);
+
+printf("\nCar is successfully passed e to w");
+
+pthread_mutex_unlock(&ns);
+pthread_mutex_unlock(&sn);
+
+pthread_mutex_unlock(&ws);
+pthread_mutex_unlock(&se);
+
+pthread_exit(NULL);
+
+}
+
+void *wte()
+
+{
+
+printf("\nCar is going from west to east");
+
+pthread_mutex_lock(&ns);
+pthread_mutex_lock(&sn);
+
+pthread_mutex_lock(&en);
+pthread_mutex_lock(&nw);
+
+sleep(2);
+
+printf("\nCar is successfully passed w to e");
+
+pthread_mutex_unlock(&ns);
+
+pthread_mutex_unlock(&sn);
+
+pthread_mutex_unlock(&en);
+
+pthread_mutex_unlock(&nw);
+
+pthread_exit(NULL);
+
+}
+
+void *nte()
+
+{
+
+printf("\nCar is going from north to east");
+
+sleep(2);
+
+printf("\nCar is successfully passed n to e");
+
+pthread_exit(NULL);
+
+}
+
+void *ntw()
+
+{
+
+printf("\nCar is going from north to west");
+
+pthread_mutex_lock(&we);
+
+pthread_mutex_lock(&sn);
+
+pthread_mutex_lock(&en);
+
+pthread_mutex_lock(&ws);
+
+pthread_mutex_lock(&se);
+
+sleep(2);
+
+printf("\nCar is successfully passed n to w");
+
+pthread_mutex_unlock(&we);
+
+pthread_mutex_unlock(&sn);
+
+pthread_mutex_unlock(&en);
+
+pthread_mutex_unlock(&ws);
+
+pthread_mutex_unlock(&se);
+
+pthread_exit(NULL);
+
+}
+
+void *stw()
+
+{
+
+printf("\ncar is going from south to west");
+
+sleep(2);
+
+printf("\nCar is successfully passed from s to w ");
+
+pthread_exit(NULL);
+
+}
+
+void *ste()
+
+{
+
+printf("\ncar is going from south to east");
+
+pthread_mutex_lock(&ew);
+
+pthread_mutex_lock(&ns);
+
+pthread_mutex_lock(&ws);
+
+pthread_mutex_lock(&en);
+
+pthread_mutex_lock(&nw);
+
+sleep(2);
+
+printf("\nCar is successfully passed from s to e");
+
+pthread_mutex_unlock(&ew);
+
+pthread_mutex_unlock(&ns);
+
+pthread_mutex_unlock(&ws);
+
+pthread_mutex_unlock(&en);
+
+pthread_mutex_unlock(&nw);
+
+pthread_exit(NULL);
+
+}
+
+void *ets()
+
+{
+
+printf("\ncar is going from east to south");
+
+sleep(2);
+
+printf("\ncar is succesfully passed from e to s");
+
+pthread_exit(NULL);
+
+}
+
+void *etn()
+
+{
+
+printf("\ncar is going from east to north");
+
+pthread_mutex_lock(&ns);
+
+pthread_mutex_lock(&we);
+
+pthread_mutex_lock(&nw);
+
+pthread_mutex_lock(&ws);
+
+pthread_mutex_lock(&se);
+
+sleep(2);
+
+printf("\ncar is successfully passed from e to n");
+
+pthread_mutex_unlock(&ns);
+
+pthread_mutex_unlock(&we);
+
+pthread_mutex_unlock(&nw);
+
+pthread_mutex_unlock(&ws);
+
+pthread_mutex_unlock(&se);
+
+pthread_exit(NULL);
+
+}
+
+void *wtn()
+
+{
+
+printf("\ncar is going from west to north");
+
+sleep(2);
+
+printf("\ncar is successfully passed from w to n");
+
+pthread_exit(NULL);
+
+}
+
+void *wts()
+
+{
+
+printf("\nCar is going from west to south");
+
+pthread_mutex_lock(&sn);
+
+pthread_mutex_lock(&ew);
+
+pthread_mutex_lock(&se);
+
+pthread_mutex_lock(&en);
+
+pthread_mutex_lock(&nw);
+
+printf("\ncar is successfully passed from w to s");
+
+pthread_mutex_unlock(&sn);
+pthread_mutex_unlock(&ew);
+
+pthread_mutex_unlock(&se);
+pthread_mutex_unlock(&en);
+
+pthread_mutex_unlock(&nw);
+pthread_exit(NULL);
+
+}
+
+int main()
+
+{
+
+printf("\nThis program run for case 1 vehicle entered intersection with same direction");
+
+pthread_t thread1,thread2,thread3,thread4,thread5,thread6,thread7,thread8,thread9,thread10,thread11,thread12;
+
+pthread_create(&thread1,NULL,nts,NULL);
+
+pthread_create(&thread2,NULL,wte,NULL);
+
+pthread_create(&thread3,NULL,etw,NULL);
+
+pthread_create(&thread4,NULL,stn,NULL);
+
+pthread_create(&thread5,NULL,ntw,NULL);
+
+pthread_create(&thread6,NULL,nte,NULL);
+
+pthread_create(&thread7,NULL,stw,NULL);
+
+pthread_create(&thread8,NULL,ste,NULL);
+
+pthread_create(&thread9,NULL,etn,NULL);
+
+pthread_create(&thread10,NULL,ets,NULL);
+
+pthread_create(&thread11,NULL,wts,NULL);
+
+pthread_create(&thread12,NULL,wtn,NULL);
+
+pthread_join(thread1,NULL);
+
+pthread_join(thread2,NULL);
+
+pthread_join(thread3,NULL);
+
+pthread_join(thread4,NULL);
+
+pthread_join(thread5,NULL);
+
+pthread_join(thread6,NULL);
+
+pthread_join(thread7,NULL);
+
+pthread_join(thread8,NULL);
+
+pthread_join(thread9,NULL);
+
+pthread_join(thread10,NULL);
+
+pthread_join(thread11,NULL);
+
+pthread_join(thread12,NULL);
+
+return 0;
+
+}
